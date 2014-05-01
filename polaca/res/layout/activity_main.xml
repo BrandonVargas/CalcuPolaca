@@ -1,0 +1,352 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:background="#071918"
+   android:orientation="vertical"
+   android:id="@+id/container"
+   >
+   
+   <LinearLayout
+       android:id="@+id/inputContainer"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="#071918"
+       android:padding="5dp" >
+
+       <EditText
+           android:id="@+id/input"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="0.98"
+           android:inputType="textNoSuggestions|number|numberSigned|numberDecimal"
+           android:textColor="#fff"
+ 		>
+		
+       </EditText>
+
+       <Button
+           android:id="@+id/borra"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:onClick="back"
+           android:text="@string/btn_borra" />
+       
+   </LinearLayout>
+
+   <LinearLayout
+       android:id="@+id/buttonsContainer"
+       android:background="#071918"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="7"
+       android:orientation="horizontal"
+       android:baselineAligned="false"
+       >
+
+       <LinearLayout
+           android:id="@+id/orangeBox1"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:background="#071918"
+           android:orientation="vertical" >
+
+       <Button
+           android:id="@+id/btn_sin"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_sin"
+           android:onClick="setTextInput" />
+       <Button
+           android:id="@+id/btn_cos"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_cos"
+           android:onClick="setTextInput" />       
+       <Button
+           android:id="@+id/btn_tan"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_tan"
+           android:onClick="setTextInput" />
+        <Button
+           android:id="@+id/btn_pi"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_pi"
+           android:onClick="setTextInput" />
+       <Button
+           android:id="@+id/btn_factorial"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_factorial"
+           android:onClick="setTextInput" />              
+       </LinearLayout>
+       
+       <LinearLayout
+           android:id="@+id/orangeBox2"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:background="#071918"
+           android:orientation="vertical" >
+       
+       <Button
+           android:id="@+id/btn_ln"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_ln"
+           android:onClick="setTextInput" />
+       <Button
+           android:id="@+id/btn_log"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_log" 
+           android:onClick="setTextInput"/>
+
+       <Button
+           android:id="@+id/btn_e"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_e"
+           android:onClick="setTextInput" />
+
+        <Button
+           android:id="@+id/btn_potencia"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_potencia"
+           android:onClick="setTextInput" />
+       <Button
+           android:id="@+id/btn_raiz"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           android:text="@string/btn_raiz"
+           android:onClick="setTextInput" /> 
+       </LinearLayout>
+       
+       <LinearLayout
+           android:id="@+id/blackBox"
+           android:background="#071918"
+           android:layout_weight="21"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_marginLeft="15dp"
+           android:orientation="vertical" 
+           android:padding="5dp">
+       
+           <LinearLayout
+               android:id="@+id/greenBox1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="#071918"
+               android:orientation="horizontal" 
+               android:weightSum="100">
+
+               <Button
+                   android:id="@+id/btn_7"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:onClick="setTextInput"
+                   android:text="@string/btn_7"
+                   android:layout_weight="16.7" />
+
+               <Button
+                   android:id="@+id/btn_8"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_8"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7"  />
+
+               <Button
+                   android:id="@+id/btn_9"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_9"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7"  />
+
+               <Button
+                   android:id="@+id/btn_div"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_div"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7"  />
+
+               <Button
+                   android:id="@+id/btn_suma"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_suma"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7"  />
+
+               <Button
+                   android:id="@+id/btn_pAbre"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_pAbre"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7"  />
+ 	                    	           	           
+           </LinearLayout>
+           
+          <LinearLayout
+               android:id="@+id/greenBox2"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="#071918"
+               android:orientation="horizontal" 
+               android:weightSum="100">
+
+               <Button
+                   android:id="@+id/btn_4"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_4"
+                   android:onClick="setTextInput" 
+                   android:layout_weight="16.7"/>
+
+               <Button
+                   android:id="@+id/btn_5"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_5"
+                   android:onClick="setTextInput" 
+                   android:layout_weight="16.7"/>
+
+               <Button
+                   android:id="@+id/btn_6"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_6"
+                   android:onClick="setTextInput" 
+                   android:layout_weight="16.7"/>
+
+               <Button
+                   android:id="@+id/btn_mult"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_mult"
+                   android:onClick="setTextInput" 
+                   android:layout_weight="16.7"/>
+
+               <Button
+                   android:id="@+id/btn_resta"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_resta"
+                   android:onClick="setTextInput" 
+                   android:layout_weight="16.7"/>
+
+               <Button
+                   android:id="@+id/btn_pCierra"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_pCierra"
+                   android:onClick="setTextInput" 
+                   android:layout_weight="16.7"/>
+ 	
+           </LinearLayout>
+
+           	<!-- GreenBox 3 -->
+		<LinearLayout
+               android:id="@+id/greenBox3"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:background="#071918"
+               android:orientation="horizontal" 
+               android:weightSum="100">
+
+             <Button
+                 android:id="@+id/btn_1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/btn_1"
+                 android:onClick="setTextInput"
+                 android:layout_weight="16.7" />
+
+               <Button
+                   android:id="@+id/btn_2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_2"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7" />
+
+               <Button
+                   android:id="@+id/btn_3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_3"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7" />
+
+               <Button
+                   android:id="@+id/btn_punto"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_punto"
+                   android:onClick="setTextInput"
+                   android:layout_weight="16.7"/>
+
+               <Button
+                   android:id="@+id/btn_C"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/btn_C"
+                   android:onClick="clearInput"
+                   android:layout_weight="16.7" />
+               <Button
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text=""
+                   android:layout_weight="16.7"
+                   android:id="@+id/egg" />
+ 	                    	           	           
+           </LinearLayout>
+           
+	<!-- GreenBox 4 -->
+
+	<LinearLayout
+	    android:id="@+id/greenBox4"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#071918"
+	    android:orientation="horizontal" >
+
+		<Button
+		    android:id="@+id/btn_0"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="0.77"
+		    android:text="@string/btn_0" 
+		    android:onClick="setTextInput"
+		    />
+
+		<Button
+		    android:id="@+id/btn_igual"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="0.77"
+		    android:text="@string/btn_igual"
+		    android:onClick="eval" />
+
+	</LinearLayout>
+	
+	<!-- END BOX  -->
+           
+       </LinearLayout>
+   </LinearLayout>
+
+</LinearLayout>

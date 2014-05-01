@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Calculator</string>
+    <string name="settings">Settings</string>
+    <string name="str_about">About</string>
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_borra">&lt;</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+    <string name="btn_igual">=</string>
+    <string name="btn_raiz">√</string>
+    <string name="btn_pi">π </string>
+    <string name="ptn_punto">.</string>
+    <string name="btn_sin">sin</string>
+    <string name="btn_cos">cos</string>
+    <string name="btn_tan">tan</string>
+    <string name="btn_factorial">!</string>
+    <string name="btn_e">e</string>
+    <string name="btn_potencia">^</string>
+    <string name="btn_ln">ln</string>
+    <string name="btn_log">log</string>
+    <string name="btn_punto">.</string>
+    <string name="btn_C">C</string>
+    <string name="btn_div">/</string>
+    <string name="btn_mult">x</string>
+    <string name="btn_suma">+</string>
+    <string name="btn_resta">-</string>
+    <string name="btn_pAbre">(</string>
+    <string name="btn_pCierra">)</string>
+    <string name="title_activity_settings">Setting</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="nDecimal">Set decimals: </string>
+    <string name="decimalDefault">Default</string>
+    <string name="decimalSelect">Select</string>
+    <string name="save">Save</string>
+
+</resources>

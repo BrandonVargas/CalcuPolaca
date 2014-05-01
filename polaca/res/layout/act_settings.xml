@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#071918"
+    android:orientation="vertical"
+    android:padding="20dp">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nDecimal"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:textColor="#fff"/>
+	 <RadioGroup
+        android:id="@+id/radioGroupSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+	     <RadioButton
+	         android:id="@+id/rbDefault"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/decimalDefault"
+	         android:textColor="#fff"
+	         android:onClick="onRadioButtonClicked" />
+
+	     <RadioButton
+	         android:id="@+id/rbSelect"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:text="@string/decimalSelect"
+	         android:textColor="#fff"
+	         android:onClick="onRadioButtonClicked"
+	          />
+        
+     </RadioGroup>
+
+	 <EditText
+	     android:id="@+id/editTextnDec"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	     android:ems="10"
+	     android:inputType="number"
+	     android:textColor="#fff" />
+
+	 <Button
+	     android:id="@+id/btnSave"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:text="@string/save"
+	     android:textColor="#fff"
+	     android:onClick="save" />
+
+</LinearLayout>
