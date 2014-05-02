@@ -15,9 +15,9 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 
-public class MainActivity extends Activity implements OnLongClickListener{
+public class MainActivity extends Activity{
 	private int egg; // I'm bored =)
-	private Button btn, delete;
+	private Button delete;
 	private EditText et;
 	private String $input; //Entrada del EditTex
 	private int identificador;
@@ -31,8 +31,6 @@ public class MainActivity extends Activity implements OnLongClickListener{
         $input = "";
         et.setText($input);
         et.setSelection(et.getText().length());
-        btn = (Button)findViewById(R.id.egg);
-        btn.setOnLongClickListener(this);
         
         /*Por default tenemos a la notacio prefija*/
         rb = (RadioButton)findViewById(R.id.rbPre);
@@ -82,16 +80,6 @@ public class MainActivity extends Activity implements OnLongClickListener{
 			@Override
 			public void onClick(DialogInterface dialog, int which) {}
 		}).show();
-    }
-    
-    @Override
-    public boolean onLongClick(View v) {
-    	
-    	switch(v.getId()){
-    		case R.id.egg:
-    		break;
-    	}
-    	return false;
     }
     
     public void egg(View v){

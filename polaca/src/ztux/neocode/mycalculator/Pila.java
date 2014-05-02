@@ -133,15 +133,13 @@ public class Pila {
       }
       if(id==0){
     	  String expV="";
-    	  for(int i=exp.length();i>=0;i--){
+    	  for(int i=exp.length()-1;i>=0;i--){
     		  expV=expV+exp.charAt(i);
     	  }
     	  return expV;
-      }else{
-    	  return exp;
       }
-      
-     
+      return exp;
+
   }
 	
 }
