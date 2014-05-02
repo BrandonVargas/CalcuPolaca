@@ -104,8 +104,7 @@ public class Pila {
     if (op.equals("(")) prf = 1;
     return prf;
   }
-  public String eval(){
-	  Eval e= new Eval();
+  public String eval(int id){
 	  ArrayList<String> expresion= new ArrayList<String>();
       String exp= new String();
       for(String o: this.salida){
@@ -132,7 +131,16 @@ public class Pila {
 	      Log.d("Expresion",exp);
 	      
       }
-      return e.value(exp);
+      if(id==0){
+    	  String expV="";
+    	  for(int i=exp.length();i>=0;i--){
+    		  expV=expV+exp.charAt(i);
+    	  }
+    	  return expV;
+      }else{
+    	  return exp;
+      }
+      
      
   }
 	
