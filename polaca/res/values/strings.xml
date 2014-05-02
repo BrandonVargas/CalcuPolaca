@@ -42,5 +42,8 @@
     <string name="decimalDefault">Default</string>
     <string name="decimalSelect">Select</string>
     <string name="save">Save</string>
+    <string name="lbl_pre">Notación prefija</string>
+    <string name="lbl_pos">Notación posfija</string>
+    <string name="lbl_modo">Modo</string>
 
 </resources>

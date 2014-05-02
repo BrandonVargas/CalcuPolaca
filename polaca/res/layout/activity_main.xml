@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   android:background="#071918"
+   android:background="#000"
    android:orientation="vertical"
    android:id="@+id/container"
    >
@@ -10,7 +10,7 @@
        android:id="@+id/inputContainer"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:background="#071918"
+
        android:padding="5dp" >
 
        <EditText
@@ -35,7 +35,7 @@
 
    <LinearLayout
        android:id="@+id/buttonsContainer"
-       android:background="#071918"
+
        android:layout_width="match_parent"
        android:layout_height="0dp"
        android:layout_weight="7"
@@ -47,95 +47,47 @@
            android:id="@+id/orangeBox1"
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
-           android:background="#071918"
+
            android:orientation="vertical" >
+           
+           <RadioGroup 
+       		android:id="@+id/radioGroupSetting"
+      		android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
 
-       <Button
-           android:id="@+id/btn_sin"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_sin"
-           android:onClick="setTextInput" />
-       <Button
-           android:id="@+id/btn_cos"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_cos"
-           android:onClick="setTextInput" />       
-       <Button
-           android:id="@+id/btn_tan"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_tan"
-           android:onClick="setTextInput" />
-        <Button
-           android:id="@+id/btn_pi"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_pi"
-           android:onClick="setTextInput" />
-       <Button
-           android:id="@+id/btn_factorial"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_factorial"
-           android:onClick="setTextInput" />              
-       </LinearLayout>
-       
-       <LinearLayout
-           android:id="@+id/orangeBox2"
-           android:layout_width="wrap_content"
-           android:layout_height="match_parent"
-           android:background="#071918"
-           android:orientation="vertical" >
-       
-       <Button
-           android:id="@+id/btn_ln"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_ln"
-           android:onClick="setTextInput" />
-       <Button
-           android:id="@+id/btn_log"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_log" 
-           android:onClick="setTextInput"/>
+               <TextView
+                   android:id="@+id/textView1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/lbl_modo"
+                   android:textColor="#FFF"
+                   android:textAppearance="?android:attr/textAppearanceLarge" />
+               
+               <RadioButton 
+				android:id="@+id/rbPre"
+	         	android:layout_width="wrap_content"
+	         	android:layout_height="wrap_content"
+	         	android:text="@string/lbl_pre"
+	         	android:textColor="#fff"
+	         	android:onClick="onRadioButtonClicked"    
+                   />
+               
+               	<RadioButton 
+				android:id="@+id/rbPos"
+	         	android:layout_width="wrap_content"
+	         	android:layout_height="wrap_content"
+	         	android:text="@string/lbl_pos"
+	         	android:textColor="#fff"
+	         	android:onClick="onRadioButtonClicked"    
+                   />
+               
+           </RadioGroup>
 
-       <Button
-           android:id="@+id/btn_e"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_e"
-           android:onClick="setTextInput" />
-
-        <Button
-           android:id="@+id/btn_potencia"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_potencia"
-           android:onClick="setTextInput" />
-       <Button
-           android:id="@+id/btn_raiz"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:text="@string/btn_raiz"
-           android:onClick="setTextInput" /> 
        </LinearLayout>
        
        <LinearLayout
            android:id="@+id/blackBox"
-           android:background="#071918"
+
            android:layout_weight="21"
            android:layout_width="0dp"
            android:layout_height="match_parent"
@@ -147,7 +99,7 @@
                android:id="@+id/greenBox1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:background="#071918"
+
                android:orientation="horizontal" 
                android:weightSum="100">
 
@@ -205,7 +157,7 @@
                android:id="@+id/greenBox2"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:background="#071918"
+
                android:orientation="horizontal" 
                android:weightSum="100">
 
@@ -264,7 +216,7 @@
                android:id="@+id/greenBox3"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:background="#071918"
+
                android:orientation="horizontal" 
                android:weightSum="100">
 
@@ -312,6 +264,7 @@
                    android:layout_height="wrap_content"
                    android:text=""
                    android:layout_weight="16.7"
+                   android:onClick="egg"
                    android:id="@+id/egg" />
  	                    	           	           
            </LinearLayout>
@@ -322,7 +275,7 @@
 	    android:id="@+id/greenBox4"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:background="#071918"
+
 	    android:orientation="horizontal" >
 
 		<Button

@@ -9,10 +9,5 @@
         android:title="@string/str_about"
         android:showAsAction="ifRoom"
         />
-    <item 
-        android:id="@+id/settings"
-        android:title="@string/settings"
-        android:orderInCategory="1"
-        android:showAsAction="ifRoom"/>
 
 </menu>

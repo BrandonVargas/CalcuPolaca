@@ -1,14 +1,9 @@
-package ztux.neocode.calculator;
+package ztux.neocode.mycalculator;
 
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import android.util.Log;
+import ztux.neocode.calculator.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,16 +11,18 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnLongClickListener{
-	
-	Button btn, delete;
-	EditText et;
-	String $input; //Entrada del EditTex
-	
-	int nDecimals;
+	private int egg; // I'm bored =)
+	private Button btn, delete;
+	private EditText et;
+	private String $input; //Entrada del EditTex
+	private int identificador;
+	private RadioButton rb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +31,13 @@ public class MainActivity extends Activity implements OnLongClickListener{
         $input = "";
         et.setText($input);
         et.setSelection(et.getText().length());
-        //et.setInputType(InputType.TYPE_NULL); //Quitamos el teclado virtual
-        
-//		Toast t = Toast.makeText(this,"Calculator",Toast.LENGTH_LONG);
-//		t.setGravity(Gravity.TOP, 0,0);
-//		t.show();
         btn = (Button)findViewById(R.id.egg);
         btn.setOnLongClickListener(this);
+        
+        /*Por default tenemos a la notacio prefija*/
+        rb = (RadioButton)findViewById(R.id.rbPre);
+        rb.setChecked(true);
+        this.identificador = 0;
         
         //En caso de que se mantenga presionado el boton de borrar
         delete = (Button)findViewById(R.id.borra);
@@ -52,7 +49,8 @@ public class MainActivity extends Activity implements OnLongClickListener{
 			}
 		});
         
-        this.nDecimals = 2;
+        
+        
     }
     
     /**
@@ -71,9 +69,6 @@ public class MainActivity extends Activity implements OnLongClickListener{
     	case R.id.about:
     		aboutMessage();
     		break;
-    	case R.id.settings:
-    		settings();
-    		break;
     	}
     	return true;
     }
@@ -91,34 +86,55 @@ public class MainActivity extends Activity implements OnLongClickListener{
     
     @Override
     public boolean onLongClick(View v) {
-    	//Egg :3
+    	
     	switch(v.getId()){
     		case R.id.egg:
-    			Toast t = Toast.makeText(this,
-    					"Why Do Programmers Think that Halloween and Christmas are the Same Day?\n"
-    					+ "Because 31OCT = 25DEC.",
-    					Toast.LENGTH_LONG);
-    			t.show();
+    		break;
     	}
     	return false;
     }
     
-    private void settings(){
-    	Log.d("ZTUX","Ajustes de la calculadora");
-    	//Intent i = new Intent("ztux.neocode.calculator.ActivitySettings");
-    	//this.startActivity(i);
-    	
-    	Intent i= new Intent();
-    	i.setClass(this,ActivitySettings.class);
-    	//startActivity(i);
-    	startActivityForResult(i, 1); //RequestCode es 1
+    public void egg(View v){
+    	if(v.getId()==R.id.egg){
+    		this.egg++;
+    	}
+    	if(this.egg==10){
+			Toast t = Toast.makeText(this,
+					"Why Do Programmers Think that Halloween and Christmas are the Same Day?\n"
+					+ "Because 31OCT = 25DEC.",
+					Toast.LENGTH_LONG);//Egg :3
+			t.show();
+			this.egg=0;
+    	}
+    }
+    
+    
+    /*Radio buttons
+     * 
+     */
+    public void onRadioButtonClicked(View v){
+    	boolean checked = ((RadioButton)v).isChecked();
+    	switch(v.getId()){
+    	case R.id.rbPre:
+    		if(checked){
+    			/*Si se elige notacion prefija*/
+    			this.identificador = 0;
+    		}
+    		break;
+    	case R.id.rbPos:
+    		if(checked){
+    			/*Si se elige notacion posfija*/
+    			this.identificador = 1;
+    		}
+    		break;
+    	}
     }
     
     /**
      * Lectura de las teclas
      */
     public void setTextInput(View v){
-    	Log.d("Info","N decimales"+ nDecimals);
+    	
     	//Si hay mensaje de Error, limpiamos la cadena
     	if(this.$input=="Error"){
     		this.$input = "";
@@ -161,36 +177,6 @@ public class MainActivity extends Activity implements OnLongClickListener{
     		break;
     	case R.id.btn_punto:
     		this.$input+=".";
-    		break;
-    	case R.id.btn_cos:
-    		this.$input+="cos(";
-    		break;
-    	case R.id.btn_sin:
-    		this.$input+="sin(";
-    		break;
-    	case R.id.btn_tan:
-    		this.$input+="tan(";
-    		break;
-    	case R.id.btn_pi:
-    		this.$input+="PI";
-    		break;
-    	case R.id.btn_factorial:
-    		this.$input+="!";
-    		break;
-    	case R.id.btn_ln:
-    		this.$input+="ln(";
-    		break;
-    	case R.id.btn_log:
-    		this.$input+="log(";
-    		break;
-    	case R.id.btn_e:
-    		this.$input+="e";
-    		break;
-    	case R.id.btn_potencia:
-    		this.$input+="^";
-    		break;
-    	case R.id.btn_raiz:
-    		this.$input+="sqrt(";
     		break;
     	case R.id.btn_pAbre:
     		this.$input+="(";
@@ -239,24 +225,23 @@ public class MainActivity extends Activity implements OnLongClickListener{
     	et.setSelection(et.getText().length());
     }
     
-    public void eval(View v){
+    public void eval(View v,int i){
     	//This string gets a temporal value
-    	Log.d("ANTES DE=> ",et.getText().toString());
     	String ans="";
     	if(!et.getText().toString().equals("")){
 	    	Pila p = new Pila();
 	    	if(p.Test(et.getText().toString())){
-	    		//Log.d("PILA","Expresion correcta");
+	    	
 	    		ans = p.eval();
 	    		if(ans.equals("Error")){
 	    			Toast t = Toast.makeText(this,"Error!",Toast.LENGTH_LONG);
 		    		t.show();
 	    		}else{
 		    		this.$input = ans;
-		    		String val = this.$input+"";
+		    		/*String val = this.$input+"";
 		    		BigDecimal big = new BigDecimal(val);
 		    		big = big.setScale(nDecimals, RoundingMode.HALF_UP);
-		    		this.$input = big.toString();
+		    		this.$input = big.toString();*/
 		    		if(ans!=null){
 		    			et.setText(this.$input);
 		    		}
@@ -266,23 +251,7 @@ public class MainActivity extends Activity implements OnLongClickListener{
 	    		t.show();
 	    	}
 	    	et.setSelection(et.getText().length());
-	    	Log.d("DESPUES DE=> ",this.$input);
     	}
     }
-    
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	Log.d("RESULT","OK =)");
-    	super.onActivityResult(requestCode, resultCode, data);
-    	if (requestCode == 1) {
-        	switch(resultCode){
-        	case RESULT_OK:
-        		this.nDecimals = data.getIntExtra("decimals", 0);
-        		Log.d("Info","N decimales"+ nDecimals);
-        		break;
-        	case RESULT_CANCELED:
-        		break;
-        	} 
-    	}
-    }
+   
 }

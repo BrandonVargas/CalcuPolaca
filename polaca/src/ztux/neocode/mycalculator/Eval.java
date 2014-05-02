@@ -1,4 +1,4 @@
-package ztux.neocode.calculator;
+package ztux.neocode.mycalculator;
 
 import java.util.Stack;
 import android.util.Log;

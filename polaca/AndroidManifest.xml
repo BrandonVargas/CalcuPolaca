@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ztux.neocode.calculator.MainActivity"
+            android:name="ztux.neocode.mycalculator.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
         
         <activity
-            android:name="ztux.neocode.calculator.ActivitySettings"
+            android:name="ztux.neocode.mycalculator.ActivitySettings"
             android:label="@string/title_activity_settings" 
             android:screenOrientation="landscape">
             <intent-filter>
