@@ -77,7 +77,7 @@ public class MainActivity extends Activity implements OnLongClickListener{
     private void aboutMessage(){
     	new AlertDialog.Builder(this)
     	.setTitle("About")
-    	.setMessage("Calculator Version 1.0")
+    	.setMessage("MyCalculator Version 1.0")
     	.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {}
@@ -225,32 +225,34 @@ public class MainActivity extends Activity implements OnLongClickListener{
     	et.setSelection(et.getText().length());
     }
     
-    public void eval(View v,int i){
-    	//This string gets a temporal value
-    	String ans="";
-    	if(!et.getText().toString().equals("")){
-	    	Pila p = new Pila();
-	    	if(p.Test(et.getText().toString())){
-	    	
-	    		ans = p.eval();
-	    		if(ans.equals("Error")){
-	    			Toast t = Toast.makeText(this,"Error!",Toast.LENGTH_LONG);
-		    		t.show();
-	    		}else{
-		    		this.$input = ans;
-		    		/*String val = this.$input+"";
-		    		BigDecimal big = new BigDecimal(val);
-		    		big = big.setScale(nDecimals, RoundingMode.HALF_UP);
-		    		this.$input = big.toString();*/
-		    		if(ans!=null){
-		    			et.setText(this.$input);
+    public void eval(View v){
+    	if(v.getId()==R.id.btn_igual){
+	    	//This string gets a temporal value
+	    	String ans="";
+	    	if(!et.getText().toString().equals("")){
+		    	Pila p = new Pila();
+		    	if(p.Test(et.getText().toString())){
+		    	
+		    		ans = p.eval(this.identificador);
+		    		if(ans.equals("Error")){
+		    			Toast t = Toast.makeText(this,"Error!",Toast.LENGTH_LONG);
+			    		t.show();
+		    		}else{
+			    		this.$input = ans;
+			    		/*String val = this.$input+"";
+			    		BigDecimal big = new BigDecimal(val);
+			    		big = big.setScale(nDecimals, RoundingMode.HALF_UP);
+			    		this.$input = big.toString();*/
+			    		if(ans!=null){
+			    			et.setText(this.$input);
+			    		}
 		    		}
-	    		}
-	    	}else{
-	    		Toast t = Toast.makeText(this,"Error!",Toast.LENGTH_LONG);
-	    		t.show();
+		    	}else{
+		    		Toast t = Toast.makeText(this,"Error!",Toast.LENGTH_LONG);
+		    		t.show();
+		    	}
+		    	et.setSelection(et.getText().length());
 	    	}
-	    	et.setSelection(et.getText().length());
     	}
     }
    
