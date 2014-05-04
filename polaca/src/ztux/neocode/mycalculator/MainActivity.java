@@ -219,7 +219,7 @@ public class MainActivity extends Activity{
 	    	String ans="";
 	    	if(!et.getText().toString().equals("")){
 		    	Pila p = new Pila();
-		    	if(p.Test(et.getText().toString())){
+		    	if(p.Test( et.getText().toString())){
 		    	
 		    		ans = p.eval(this.identificador);
 		    		if(ans.equals("Error")){

@@ -4,7 +4,7 @@ import java.util.Stack;
 
 import android.util.Log;
 
-public class Pila {
+public class Pila{
 	//DeclaraciÃ³n de las pilas
     Stack<String> entrada = new Stack<String>(); //Pila entrada
     Stack<String> temporal = new Stack<String>(); //Pila temporal para operadores
@@ -38,37 +38,36 @@ public class Pila {
     	entrada.push(expresion.get(i));
     }
     try {
-      //Algoritmo Infijo a Postfijo
-      while (!entrada.empty()) {
-        switch (pref(entrada.peek())){
-          case 1:
-            temporal.push(entrada.pop());
-            break;
-          case 2:
-            while(!temporal.peek().equals("(")) {
-              salida.push(temporal.pop());
-            }
-            temporal.pop();
-            entrada.pop();
-            break; 
-          case 3:
-          case 4:
-            while(pref(temporal.peek()) >= pref(entrada.peek())) {
-              salida.push(temporal.pop());
-            }
-            temporal.push(entrada.pop());
-            break; 
-          case 5:
-            while(pref(temporal.peek()) >= pref(entrada.peek())) {
-              salida.push(temporal.pop());
-            }
-            temporal.push(entrada.pop());
-            break;
-          default:
-            salida.push(entrada.pop()); 
-        } 
-      } 
-      
+	      //Algoritmo Infijo a Postfijo
+	      while (!entrada.empty()) {
+	        switch (pref(entrada.peek())){
+	          case 1:
+	            temporal.push(entrada.pop());
+	            break;
+	          case 2:
+	            while(!temporal.peek().equals("(")) {
+	              salida.push(temporal.pop());
+	            }
+	            temporal.pop();
+	            entrada.pop();
+	            break; 
+	          case 3:
+	          case 4:
+	            while(pref(temporal.peek()) >= pref(entrada.peek())) {
+	              salida.push(temporal.pop());
+	            }
+	            temporal.push(entrada.pop());
+	            break; 
+	          case 5:
+	            while(pref(temporal.peek()) >= pref(entrada.peek())) {
+	              salida.push(temporal.pop());
+	            }
+	            temporal.push(entrada.pop());
+	            break;
+	          default:
+	            salida.push(entrada.pop()); 
+	        } 
+	      } 
       return true; //la expresion es correcta
     }catch(Exception ex){ 
     	Log.e("Error en la expresión","Verifica");
@@ -80,9 +79,9 @@ public class Pila {
   private static String depurar(String s) {
 	String e= ""+Math.E;
 	String pi=""+Math.PI;
-    s = s.replaceAll("\\s+", "").replaceAll("--","+").replaceAll("\\+\\+","+").replaceAll("\\+-","-").replaceAll("-\\+","-").replaceAll("cos","c").replaceAll("sin","s").replaceAll("tan","t").replaceAll("ln","n").replaceAll("log","l").replaceAll("sqrt","q").replaceAll("e",e).replaceAll("PI",pi); //Elimina espacios en blanco
+    s = s.replaceAll("\\s+", "").replaceAll("--","+").replaceAll("\\+\\+","+").replaceAll("\\+-","-").replaceAll("-\\+","-").replaceAll("e",e).replaceAll("PI",pi); //Elimina espacios en blanco
     s = "(" + s + ")";
-    String simbols = "+-*/()^!sctnlq";
+    String simbols = "+-*/()^";
     String str = "";
     //Deja espacios entre operadores
     for (int i = 0; i < s.length(); i++) {
@@ -97,9 +96,8 @@ public class Pila {
   private static int pref(String op) {
     int prf = 0;
     if (op.equals("^")) prf = 5;
-    if (op.equals("*") || op.equals("/")) prf = 5;
-    if (op.equals("+") || op.equals("-")) prf = 4;
-    if (op.equals("c") || op.equals("s")|| op.equals("t")|| op.equals("n")|| op.equals("l")|| op.equals("q")|| op.equals("!")) prf= 3;
+    if (op.equals("*") || op.equals("/")) prf = 4;
+    if (op.equals("+") || op.equals("-")) prf = 3;
     if (op.equals(")")) prf = 2;
     if (op.equals("(")) prf = 1;
     return prf;
@@ -124,22 +122,36 @@ public class Pila {
 	    		  expresion.add(i,"-"+expresion.get(i-2));
 	        	  expresion.remove(i+2);
 	          }
-	      }
+	      }     
+      }
+      
+      if(id==0){
+    	  String expV="";
+    	  String str="";
+    	  String str1="";
+    	  String simbols = "+-*/^";
+    	  for(int i=expresion.size()-1;i>=2;i--){
+    		  if (simbols.contains("" + expresion.get(i))&&!simbols.contains("" + expresion.get(i-2))) {
+    		        str+=expresion.remove(i-1);
+    		        str1+=expresion.remove(i-2);
+    		        expresion.add(i-1,str1);
+    		        expresion.add(i-2,str);
+    		  }		  
+    	  }
+    	  for(int i=expresion.size()-1;i>=0;i--){
+    		  expV+=expresion.get(i);
+    	  }
+    	  return expV;
+      }else{
 	      for(int i=0;i<=expresion.size()-1;i++){
 	    	  exp=exp + expresion.get(i) + " ";
 	      }
-	      Log.d("Expresion",exp);
-	      
+	      return exp;
       }
-      if(id==0){
-    	  String expV="";
-    	  for(int i=exp.length()-1;i>=0;i--){
-    		  expV=expV+exp.charAt(i);
-    	  }
-    	  return expV;
-      }
-      return exp;
-
+    	  
+      
+      
+     
   }
 	
 }
