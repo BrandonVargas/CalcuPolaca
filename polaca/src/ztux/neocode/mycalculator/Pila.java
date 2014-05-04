@@ -10,7 +10,7 @@ public class Pila{
     Stack<String> temporal = new Stack<String>(); //Pila temporal para operadores
     Stack<String> salida = new Stack<String>(); //Pila salida
 	
-    public boolean Test(String exp){
+    public boolean Test(String exp,int id){
     //Depurar la expresion
     String expr = depurar(exp);
     String[] arrayInfix = expr.split(" ");
@@ -33,44 +33,76 @@ public class Pila{
         }
     }
 
-    //Anadir el array a la Pila de entrada
-    for (int i = expresion.size() - 1; i >= 0; i--) {
-    	entrada.push(expresion.get(i));
-    }
+    
     try {
-	      //Algoritmo Infijo a Postfijo
-	      while (!entrada.empty()) {
-	        switch (pref(entrada.peek())){
-	          case 1:
-	            temporal.push(entrada.pop());
-	            break;
-	          case 2:
-	            while(!temporal.peek().equals("(")) {
-	              salida.push(temporal.pop());
-	            }
-	            temporal.pop();
-	            entrada.pop();
-	            break; 
-	          case 3:
-	          case 4:
-	            while(pref(temporal.peek()) >= pref(entrada.peek())) {
-	              salida.push(temporal.pop());
-	            }
-	            temporal.push(entrada.pop());
-	            break; 
-	          case 5:
-	            while(pref(temporal.peek()) >= pref(entrada.peek())) {
-	              salida.push(temporal.pop());
-	            }
-	            temporal.push(entrada.pop());
-	            break;
-	          default:
-	            salida.push(entrada.pop()); 
-	        } 
-	      } 
-      return true; //la expresion es correcta
+    	if(id == 1){
+    		//Anadir el array a la Pila de entrada
+    	    for (int i = expresion.size() - 1; i >= 0; i--) {
+    	    	entrada.push(expresion.get(i));
+    	    }
+		      //Algoritmo Infijo a Postfijo
+		      while (!entrada.empty()) {
+		        switch (pref(entrada.peek())){
+		          case 1:
+		            temporal.push(entrada.pop());
+		            break;
+		          case 2:
+		            while(!temporal.peek().equals("(")) {
+		              salida.push(temporal.pop());
+		            }
+		            temporal.pop();
+		            entrada.pop();
+		            break; 
+		          case 3:
+		          case 4: 
+		          case 5:
+		            while(pref(temporal.peek()) >= pref(entrada.peek())) {
+		              salida.push(temporal.pop());
+		            }
+		            temporal.push(entrada.pop());
+		            break;
+		          default:
+		            salida.push(entrada.pop()); 
+		        } 
+		      } 
+		      return true; //la expresion es correcta
+	      }else{
+	    	//Anadir el array a la Pila de entrada
+	    	    for (int i =0; i <= expresion.size() - 1; i++) {
+	    	    	entrada.push(expresion.get(i));
+	    	    	Log.d("expresion "+ i,expresion.get(i));
+	    	    }
+	    	//Algoritmo Infijo a Postfijo
+		      while (!entrada.empty()) {
+		    	  Log.d("entrada ",entrada.peek());
+		        switch (pref(entrada.peek())){
+		          case 1:
+		        	  while(!temporal.peek().equals(")")) {
+			              salida.push(temporal.pop());
+			            }
+			            temporal.pop();
+			            entrada.pop();
+		            break;
+		          case 2:
+		        	temporal.push(entrada.pop());
+		            break; 
+		          case 3:
+		          case 4: 
+		          case 5:
+		            while(pref(temporal.peek()) > pref(entrada.peek())) {
+		              salida.push(temporal.pop());
+		            }
+		            temporal.push(entrada.pop());
+		            break;
+		          default:
+		            salida.push(entrada.pop()); 
+		        }
+		      }
+		      return true; //la expresion es correcta
+	      }
+      
     }catch(Exception ex){ 
-    	Log.e("Error en la expresión","Verifica");
+    	Log.e("Error en la expresión",ex.toString());
     }
 	return false;   
 }
@@ -108,50 +140,24 @@ public class Pila{
       for(String o: this.salida){
     	  expresion.add(o);
       }
-      if(expresion.size()>=2){
-	      for(int i=0;i<=expresion.size()-1;i++){
-	    	  Log.d("Expresion antes",expresion.get(i));
-	      }
-	      
-	      if(expresion.get(1).equals("-")||expresion.get(1).equals("+")){
-	    	  expresion.add(0,"0");
-	      }
-	      for(int i=0;i<=expresion.size()-2;i++){
-	    	  if((expresion.get(i+1).equals("*")||expresion.get(i+1).equals("/"))&&(expresion.get(i).equals("-"))){
-	        	  Log.d("Aqui","si entre");
-	    		  expresion.add(i,"-"+expresion.get(i-2));
-	        	  expresion.remove(i+2);
-	          }
-	      }     
-      }
-      
       if(id==0){
-    	  String expV="";
-    	  String str="";
-    	  String str1="";
-    	  String simbols = "+-*/^";
-    	  for(int i=expresion.size()-1;i>=2;i--){
-    		  if (simbols.contains("" + expresion.get(i))&&!simbols.contains("" + expresion.get(i-2))) {
-    		        str+=expresion.remove(i-1);
-    		        str1+=expresion.remove(i-2);
-    		        expresion.add(i-1,str1);
-    		        expresion.add(i-2,str);
-    		  }		  
-    	  }
-    	  for(int i=expresion.size()-1;i>=0;i--){
-    		  expV+=expresion.get(i);
-    	  }
-    	  return expV;
-      }else{
-	      for(int i=0;i<=expresion.size()-1;i++){
-	    	  exp=exp + expresion.get(i) + " ";
-	      }
-	      return exp;
-      }
+    	  String expV=new String();
     	  
+    	  for(int i=expresion.size()-1;i>=0;i--){
+    		  expV+=expresion.get(i)+ " ";
+    	  }
+    	  
+    	  return expV;
       
+      }
       
-     
-  }
-	
+      for(int i=0;i<=expresion.size()-1;i++){
+    	  exp=exp + expresion.get(i) + " ";
+	  }
+	      
+      return exp;
 }
+}
+
+	
+
